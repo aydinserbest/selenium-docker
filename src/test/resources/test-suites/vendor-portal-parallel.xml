@@ -1,0 +1,32 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="vendor-portal" parallel="tests" thread-count="4">
+
+    <!-- thread-count="2" dedigimizde asagida 3 testimiz var
+    ve once 2 si, sonra da kalan 1 i calisir
+     thread-count yazmasaydik hic yani soyle olsaydi:
+     <suite name="vendor-portal" parallel="tests">
+
+     3 test de ayni anda run olurdu
+     ya da <suite name="vendor-portal" parallel="tests" thread-count="3">
+     thread-count 3 deseydik yine ayni seydi-->
+
+    <test name="user-sam">
+            <parameter name="testDataPath" value="test-data/vendor-portal/sam.json"/>
+            <classes>
+                <class name="org.example.tests.vendorportal.VendorPortalTest"></class>
+            </classes>
+        </test>
+    <test name="user-mike">
+        <parameter name="testDataPath" value="test-data/vendor-portal/mike.json"/>
+        <classes>
+            <class name="org.example.tests.vendorportal.VendorPortalTest"></class>
+        </classes>
+    </test>
+    <test name="user-john">
+        <parameter name="testDataPath" value="test-data/vendor-portal/john.json"/>
+        <classes>
+            <class name="org.example.tests.vendorportal.VendorPortalTest"></class>
+        </classes>
+    </test>
+
+    </suite>
