@@ -13,10 +13,18 @@ pipeline{
             }
         }
          stage('push image'){
+         environment{
+            DOCKER_HUB=credentials('dockerhub-creds')
+            }
             steps{
+                sh 'echo ${DOCKER_HUB_PSW} | docker login -u ${DOCKER_HUB_USR} --password-stdin'
                 sh "docker push aserbest/selenium"
             }
         }
 }
-
+    post{
+        always{
+            sh "docker logout"
+            }
+       }
 }
